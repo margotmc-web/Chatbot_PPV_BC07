@@ -90,7 +90,7 @@ flowchart LR
     class P5,C8 ia
 ```
 
-M�me structure des deux côtés : seule change la nature de chaque brique. La création de ticket n'existe que dans la cible.
+Même structure des deux côtés : seule change la nature de chaque brique. La création de ticket n'existe que dans la cible.
 
 ## 4.3 Les technologies, par couche
 

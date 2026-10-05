@@ -6,11 +6,11 @@
 
 ```mermaid
 flowchart LR
-    subgraph AV["Sans recherche préalable"]
+    subgraph AV["Sans principe RAG"]
         direction TB
         A1["Question"] --> A2["Toute la documentation<br/>envoyée à l'IA"] --> A3["Réponse<br/>5 000 mots transmis"]
     end
-    subgraph AP["Avec recherche préalable"]
+    subgraph AP["Avec principe RAG"]
         direction TB
         B1["Question"] --> B2["Recherche :<br/>3 passages utiles"] --> B3["Ces 3 passages<br/>envoyés à l'IA"] --> B4["Réponse + sources<br/>300 mots transmis"]
     end

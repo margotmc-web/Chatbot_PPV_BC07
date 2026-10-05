@@ -13,7 +13,7 @@ Code du projet : [github.com/margotmc-web/Chatbot_PPV](https://github.com/margot
 |---|---|
 | 1 | [Le projet](01-projet.md) |
 | 2 | [Description fonctionnelle](02-description-fonctionnelle.md) |
-| 2.1 | [Cas d'utilisation](diagramme-cas-utilisation.md)) |
+| 2.1 | [Cas d'utilisation](diagramme-cas-utilisation.md) |
 | 3 | [Benchmark des solutions](03-benchmark.md) |
 | 4 | [Architecture technique](04-architecture.md) |
 | 5 | [Planification du développement](05-planification.md) |

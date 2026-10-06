@@ -138,55 +138,54 @@ Trois cardinalités méritent d'être justifiées :
 
 ## 13.7 Modèle logique
 
-Convention : clé primaire <u>soulignée</u>, clé étrangère précédée de `#`.
+Convention : clé primaire en tête, clé étrangère précédée de `#`. Chaque entité reçoit un identifiant `id` ; chaque clé étrangère porte le nom de la table d'origine suivi de `_id`.
 
 ```
-UTILISATEUR (matricule, nom, prenom, email, profil)
+UTILISATEUR (id, matricule, nom, prenom, email, profil)
 
-MACHINE_VIRTUELLE (idVM, nomVM, typeVM, statutVM, #matricule)
+MACHINE_VIRTUELLE (id, nom, type, statut, #utilisateur_id)
 
-PORTAIL (codePortail, libelle)
+PORTAIL (id, code, libelle)
 
-CONVERSATION (idConversation, dateOuverture, dateCloture,
-              #matricule, #codePortail, #idVM)
+CONVERSATION (id, date_ouverture, date_cloture,
+              #utilisateur_id, #portail_id, #machine_virtuelle_id)
 
-ECHANGE (idEchange, horodatage, question, reponse,
-         scoreConfiance, coutEstime,
-         #idConversation, #codeCategorie)
+ECHANGE (id, horodatage, question, reponse,
+         score_confiance, cout_estime,
+         #conversation_id, #categorie_incident_id)
 
-CATEGORIE_INCIDENT (codeCategorie, libelle)
+CATEGORIE_INCIDENT (id, code, libelle)
 
-TICKET_PREREDIGE (idTicket, dateGeneration, objet, description,
-                  reporte, #idEchange)
+TICKET_PREREDIGE (id, date_generation, objet, description,
+                  reporte, #echange_id)
 
-DOCUMENT (idDocument, titre, urlSharePoint, dateMiseAJour)
+DOCUMENT (id, titre, url_sharepoint, date_mise_a_jour)
 
-MORCEAU (idMorceau, texte, position, #idDocument)
+MORCEAU (id, texte, position, #document_id)
 
-CITATION (#idEchange, #idMorceau, tauxCorrespondance, rang)
+CITATION (id, taux_correspondance, rang, #echange_id, #morceau_id)
 ```
-
-Dans `CITATION`, la clé primaire est le couple `(idEchange, idMorceau)` : un même morceau ne peut être cité qu'une fois dans un échange donné.
 
 ## 13.8 Le modèle logique dessiné avec Mermaid
 
-Notation « pied de corbeau » : ce n'est pas la notation Merise du MCD ci-dessus, mais celle du modèle logique. `||--o{` se lit « exactement un, vers zéro ou plusieurs ». `PK` désigne la clé primaire, `FK` une clé étrangère.
+Notation « pied de corbeau » : elle n'est pas la notation Merise employée pour le MCD. `||--o{` se lit « exactement un, vers zéro ou plusieurs ». `PK` et `FK` désignent les clés primaire et étrangère.
 
 ```mermaid
 erDiagram
-    UTILISATEUR ||--o{ MACHINE_VIRTUELLE : "est affectataire de"
+    UTILISATEUR ||--o{ MACHINE_VIRTUELLE : utilise
     UTILISATEUR ||--o{ CONVERSATION : ouvre
-    PORTAIL ||--o{ CONVERSATION : "donne acces a"
-    MACHINE_VIRTUELLE ||--o{ CONVERSATION : "est concernee par"
-    CONVERSATION ||--|{ ECHANGE : comporte
+    PORTAIL ||--o{ CONVERSATION : accueille
+    MACHINE_VIRTUELLE ||--o{ CONVERSATION : concerne
+    CONVERSATION ||--o{ ECHANGE : comporte
     CATEGORIE_INCIDENT ||--o{ ECHANGE : classe
     ECHANGE ||--o| TICKET_PREREDIGE : genere
-    ECHANGE ||--o{ CITATION : "est cite dans"
-    MORCEAU ||--o{ CITATION : "est cite par"
-    DOCUMENT ||--|{ MORCEAU : "est decoupe en"
+    ECHANGE ||--o{ CITATION : source
+    MORCEAU ||--o{ CITATION : cite
+    DOCUMENT ||--o{ MORCEAU : decoupe
 
     UTILISATEUR {
-        string matricule PK
+        uuid id PK
+        string matricule
         string nom
         string prenom
         string email
@@ -194,78 +193,78 @@ erDiagram
     }
 
     MACHINE_VIRTUELLE {
-        uuid id_vm PK
-        string nom_vm
-        string type_vm
-        string statut_vm
-        string matricule FK
+        uuid id PK
+        string nom
+        string type
+        string statut
+        uuid utilisateur_id FK
     }
 
     PORTAIL {
-        string code_portail PK
+        uuid id PK
+        string code
         string libelle
     }
 
     CONVERSATION {
-        uuid id_conversation PK
+        uuid id PK
         datetime date_ouverture
         datetime date_cloture
-        string matricule FK
-        string code_portail FK
-        uuid id_vm FK
+        uuid utilisateur_id FK
+        uuid portail_id FK
+        uuid machine_virtuelle_id FK
     }
 
     ECHANGE {
-        uuid id_echange PK
+        uuid id PK
         datetime horodatage
-        text question
-        text reponse
+        string question
+        string reponse
         float score_confiance
         float cout_estime
-        uuid id_conversation FK
-        string code_categorie FK
+        uuid conversation_id FK
+        uuid categorie_incident_id FK
     }
 
     CATEGORIE_INCIDENT {
-        string code_categorie PK
+        uuid id PK
+        string code
         string libelle
     }
 
     TICKET_PREREDIGE {
-        uuid id_ticket PK
+        uuid id PK
         datetime date_generation
         string objet
-        text description
+        string description
         boolean reporte
-        uuid id_echange FK
+        uuid echange_id FK
     }
 
     DOCUMENT {
-        uuid id_document PK
+        uuid id PK
         string titre
         string url_sharepoint
-        date date_mise_a_jour
+        datetime date_mise_a_jour
     }
 
     MORCEAU {
-        uuid id_morceau PK
-        text texte
+        uuid id PK
+        string texte
         int position
-        uuid id_document FK
+        uuid document_id FK
     }
 
     CITATION {
-        uuid id_echange PK "et cle etrangere vers ECHANGE"
-        uuid id_morceau PK "et cle etrangere vers MORCEAU"
+        uuid id PK
         float taux_correspondance
         int rang
+        uuid echange_id FK
+        uuid morceau_id FK
     }
 ```
 
-Deux remarques sur ce schéma :
-
-- **`CITATION` a une clé primaire composée** de `id_echange` et `id_morceau`. Les deux sont à la fois clé primaire et clé étrangère : c'est la signature d'une table issue d'une association, et c'est ce qui garantit qu'un morceau n'est cité qu'une seule fois par échange.
-- **`CONVERSATION` porte trois clés étrangères.** Elle est au carrefour du modèle : qui a posé la question, depuis quel portail, et sur quelle machine virtuelle le cas échéant.
+`CITATION` suit exactement le schéma d'une table issue d'une association : son propre identifiant, ses données propres — le taux de correspondance et le rang d'affichage — et les deux clés étrangères qui la relient à l'échange et au morceau cité.
 
 ## 13.9 Ce que le modèle ne stocke pas
 

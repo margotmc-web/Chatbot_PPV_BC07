@@ -20,8 +20,8 @@ Code du projet : [github.com/margotmc-web/Chatbot_PPV](https://github.com/margot
 | 7 | [Revue de code](07-revue-de-code.md) |
 | 8 | [Plan de release](08-plan-de-release.md) |
 | 9 | [Diagramme-cas d'utilisation](diagramme-cas-utilisation.md) |
-| 10 | [Diagramme d'activité](8-userflow-resolution-incident.md) |
-| 11 | [Diagramme d'activité](9-userflow-recherche-information.md) |
+| 10 | [Diagramme d'activité résolution d'incident](8-userflow-resolution-incident.md) |
+| 11 | [Diagramme d'activité recherche d'information](9-userflow-recherche-information.md) |
 
 ---
 

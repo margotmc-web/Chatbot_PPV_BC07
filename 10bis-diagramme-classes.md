@@ -70,9 +70,9 @@ classDiagram
         +String extrait
     }
 
-    Utilisateur "1" --> "*" Conversation : ouvre
-    Conversation "1" *-- "*" Echange : contient
-    Echange "1" o-- "*" SourceCitee : cite
+    Utilisateur "1" --> "0..*" Conversation : ouvre
+    Conversation "1" *-- "0..*" Echange : contient
+    Echange "1" o-- "0..*" SourceCitee : cite
 ```
 
 **Comment le lire.** Un utilisateur ouvre plusieurs conversations. Une conversation contient plusieurs échanges, et ces échanges disparaissent avec elle (losange plein). Chaque échange cite plusieurs sources, qui elles continuent d'exister ailleurs (losange creux).
@@ -109,8 +109,8 @@ classDiagram
         +rechercher(empreinte, nombre) List~MorceauDocument~
     }
 
-    Document "1" *-- "*" MorceauDocument : est decoupe en
-    BaseVectorielle "1" o-- "*" MorceauDocument : indexe
+    Document "1" *-- "0..*" MorceauDocument : est decoupe en
+    BaseVectorielle "1" o-- "0..*" MorceauDocument : indexe
 ```
 
 **Comment le lire.** Un document est découpé en morceaux de 1 000 caractères, se chevauchant sur 200 caractères. Ces morceaux appartiennent au document : s'il disparaît, ils disparaissent (losange plein).
@@ -159,7 +159,7 @@ classDiagram
 
     ServiceRAG "1" --> "1" BaseVectorielle : interroge
     ServiceRAG "1" --> "1" ModeleIA : sollicite
-    ServiceRAG "1" ..> "*" Echange : produit
+    ServiceRAG "1" ..> "0..*" Echange : produit
 ```
 
 **Comment le lire.** `ServiceRAG` est la classe centrale du prototype, celle qui porte toute la démonstration de faisabilité. Elle fait trois choses dans l'ordre : interroger la base de recherche, construire le contexte à partir des morceaux obtenus, demander la rédaction au modèle d'IA.

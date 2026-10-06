@@ -9,12 +9,12 @@ flowchart TD
     C --> D{"Information<br/>trouvée ?"}
 
     D -->|Oui| E["Réponse + source<br/>+ date de mise à jour du document"]
-    D -->|Non| F["Orientation vers<br/>le gestionnaire de parc"]
+    D -->|Non| F["Orientation vers<br/>la MOA du service PPV"]
 
     E --> G{"Besoin complémentaire<br/>détecté ?"}
     G -->|Non| H([Fin — information obtenue])
     G -->|"Oui, usage inadapté"| I["Suggestion de réorientation<br/>vers une VM standard"]
-    I --> J([Mise en relation<br/>avec le gestionnaire])
+    I --> J([Mise en relation<br/>avec la MOA du service PPV])
     F --> J
 
     classDef ok fill:#e4f3e8,stroke:#1a6b2f,color:#143d1f;

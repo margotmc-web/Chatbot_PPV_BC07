@@ -19,7 +19,7 @@ Du point de vue de l'utilisateur, le fonctionnement tient en quatre temps :
 | Recherche préalable dans la documentation | 🟢 Vérifié |
 | Affichage des sources et du taux de correspondance | 🟢 Vérifié |
 | Création automatique d'un ticket vers le niveau 2 | 🔴 À construire |
-| Accès depuis Teams | 🔴 À construire |
+| Accès depuis Sharepoint de l'offre/Catalogue des services numériques | 🔴 À construire |
 
 > **Le résultat attendu le plus discriminant est l'affichage des sources.** Un assistant qui répond sans justifier sa réponse n'est pas utilisable dans un contexte de support : l'utilisateur doit pouvoir vérifier d'où vient l'information, et le service doit pouvoir identifier une documentation obsolète. Cette exigence a orienté l'ensemble des choix techniques.
 

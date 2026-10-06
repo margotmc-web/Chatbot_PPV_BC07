@@ -6,7 +6,7 @@
 
 Le service PPV de la SNCF met à disposition de ses clients internes des machines virtuelles, facturées à la consommation. Son support de niveau 1 traite des demandes très répétitives : une machine qui ne démarre pas, une session qui se ferme, une question sur les conditions tarifaires de l'offre.
 
-Le projet consiste à concevoir un assistant conversationnel capable de traiter ces demandes de premier niveau à partir de la documentation interne du service. L'environnement cible est entièrement cloud Microsoft : Teams comme porte d'entrée, SharePoint comme base documentaire, pour une population d'environ 1 500 utilisateurs.
+Le projet consiste à concevoir un assistant conversationnel capable de traiter ces demandes de premier niveau à partir de la documentation interne du service. L'environnement cible est entièrement cloud Microsoft : Sharepoint de l'offre/Catalogue des services numériques comme portes d'entrée, SharePoint comme base documentaire, pour une population d'environ 1 500 utilisateurs.
 
 **Périmètre du prototype.** Ce dossier ne porte pas sur l'assistant dans son ensemble, mais sur la brique qui concentre la difficulté technique : faire répondre une intelligence artificielle à partir d'une documentation d'entreprise, de façon fiable et à un coût soutenable pour 1 500 utilisateurs.
 

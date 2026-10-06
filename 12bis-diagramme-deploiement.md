@@ -10,7 +10,7 @@ Tout tient sur un poste de travail, à l'exception des appels au fournisseur d'I
 
 ```mermaid
 flowchart TB
-    subgraph POSTE["NOEUD — Poste de travail Windows"]
+    subgraph POSTE["Poste de travail Windows"]
         direction TB
         subgraph NAV["Navigateur"]
             N1["Interface React<br/>fichiers statiques"]
@@ -25,7 +25,7 @@ flowchart TB
         N5["vectorize.py<br/>execution ponctuelle"]
     end
 
-    subgraph EXT["NOEUD — Internet"]
+    subgraph EXT["Internet"]
         E1["API OpenAI<br/>text-embedding-3-small<br/>gpt-3.5-turbo"]
     end
 
@@ -57,7 +57,7 @@ Le MVP ne génère pas de texte : il guide l'utilisateur dans des parcours préd
 
 ```mermaid
 flowchart TB
-    subgraph POSTE["NOEUD — Poste utilisateur SNCF"]
+    subgraph POSTE["Poste utilisateur SNCF"]
         U1["Navigateur"]
     end
 

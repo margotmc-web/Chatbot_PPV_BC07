@@ -168,8 +168,6 @@ CITATION (id, taux_correspondance, rang, #echange_id, #morceau_id)
 
 ## 13.8 Le modèle logique dessiné avec Mermaid
 
-Notation « pied de corbeau » : elle n'est pas la notation Merise employée pour le MCD. `||--o{` se lit « exactement un, vers zéro ou plusieurs ». `PK` et `FK` désignent les clés primaire et étrangère.
-
 ```mermaid
 erDiagram
     UTILISATEUR ||--o{ MACHINE_VIRTUELLE : utilise

@@ -13,7 +13,7 @@ flowchart TD
 
     E --> G{"Besoin complémentaire<br/>détecté ?"}
     G -->|Non| H([Fin — information obtenue])
-    G -->|"Oui, usage inadapté"| I["Suggestion de réorientation<br/>vers une VM standard"]
+    G -->|"Oui"| I["Suggestion de réorientation<br/>vers une VM standard"]
     I --> J([Mise en relation<br/>avec la MOA du service PPV])
     F --> J
 

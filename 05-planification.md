@@ -14,7 +14,7 @@ Priorisation MoSCoW appliquée au MVP, limité à la résolution d'incident.
 | Doit avoir | Réponse « je ne sais pas » quand aucun passage ne correspond | 🔴 À construire |
 | Doit avoir | Création automatique d'un ticket vers le niveau 2 | 🔴 À construire |
 | Doit avoir | Indexation automatique de la documentation SharePoint | 🔴 À construire |
-| Devrait avoir | Accès depuis Teams | 🔴 À construire |
+| Devrait avoir | Accès depuis le catalogue des services numériques/Sharepoint de l'offre | 🔴 À construire |
 | Devrait avoir | Historique des échanges par utilisateur | 🔴 À construire |
 | Pourrait avoir | Tableau de bord d'usage pour le gestionnaire de parc | 🔴 À construire |
 | N'aura pas (MVP) | Recherche d'information sur l'offre | Reporté en v2 |

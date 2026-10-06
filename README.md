@@ -22,7 +22,7 @@ Code du projet : [github.com/margotmc-web/Chatbot_PPV](https://github.com/margot
 | 9 | [Diagramme-cas d'utilisation](diagramme-cas-utilisation.md) |
 | 10 | [Diagramme d'activité résolution d'incident](8-userflow-resolution-incident.md) |
 | 11 | [Diagramme d'activité recherche d'information](9-userflow-recherche-information.md) |
-| 12 | [Diagramme de classes](10-diagramme-classes.md) |
+| 12 | [Diagramme de classes](10bis-diagramme-classes.md) |
 | 13 | [Diagramme séquence](11-diagramme-sequence.md) |
 | 14 | [Diagramme de déploiement](12-diagramme-deploiement.md) |
 

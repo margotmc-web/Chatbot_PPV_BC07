@@ -61,7 +61,7 @@ flowchart TB
         U1["Navigateur"]
     end
 
-    subgraph M365["NOEUD — Tenant Microsoft 365 SNCF"]
+    subgraph M365["Microsoft 365 SNCF"]
         direction TB
         subgraph SP["SharePoint — offre PPV"]
             S1["Site de l'offre PPV<br/>pages existantes"]
@@ -72,7 +72,7 @@ flowchart TB
         AD["Microsoft Entra ID<br/>authentification unique"]
     end
 
-    subgraph SN["NOEUD — ServiceNow"]
+    subgraph SN["ServiceNow"]
         T1["API de creation de tickets"]
     end
 
@@ -104,11 +104,11 @@ La phase 2 ajoute la recherche documentaire et la génération de réponses. Les
 
 ```mermaid
 flowchart TB
-    subgraph POSTE["NOEUD — Poste utilisateur SNCF"]
+    subgraph POSTE["Poste utilisateur SNCF"]
         U1["Navigateur"]
     end
 
-    subgraph M365["NOEUD — Tenant Microsoft 365 SNCF"]
+    subgraph M365["Microsoft 365 SNCF"]
         direction TB
         subgraph SP["SharePoint — offre PPV"]
             S1["Site de l'offre PPV"]
@@ -120,7 +120,7 @@ flowchart TB
         AD["Microsoft Entra ID<br/>authentification unique"]
     end
 
-    subgraph AZ["NOEUD — Abonnement Azure SNCF"]
+    subgraph AZ["Abonnement Azure SNCF"]
         direction TB
         A1["Azure App Service<br/>backend Node.js / Express"]
         A2[("Azure AI Search<br/>index vectoriel")]
@@ -128,7 +128,7 @@ flowchart TB
         A4["Journalisation<br/>conservation 6 mois"]
     end
 
-    subgraph SN["NOEUD — ServiceNow"]
+    subgraph SN["ServiceNow"]
         T1["API de creation de tickets"]
     end
 

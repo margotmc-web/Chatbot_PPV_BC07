@@ -4,8 +4,8 @@ Utilisateur type : Louis, usage occasionnel d'une VM clone.
 
 ```mermaid
 flowchart TD
-    A([Louis s'interroge sur l'offre<br/>coût, options, éligibilité]) --> B["Il pose sa question<br/>à l'assistant"]
-    B --> C["Recherche dans la documentation<br/>tarifaire et commerciale"]
+    A([Louis s'interroge sur la pertinence de son parc de VM Clone, vaut-il mieux des VM Standard ?]) --> B["Il pose sa question<br/>à l'assistant"]
+    B --> C["L'assistant recherche dans la documentation<br/>tarifaire et commerciale"]
     C --> D{"Information<br/>trouvée ?"}
 
     D -->|Oui| E["Réponse + source<br/>+ date de mise à jour du document"]

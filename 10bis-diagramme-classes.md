@@ -143,12 +143,17 @@ classDiagram
     }
 
     class BaseVectorielle {
-        +rechercher(empreinte, nombre)
+        +String emplacement
+        +Integer nombreMorceaux
+        +indexer(morceaux)
+        +rechercher(empreinte, nombre) List~MorceauDocument~
     }
 
     class Echange {
         +String question
         +String reponse
+        +Date horodatage
+        +Float scoreConfiance
         +Float coutEnEuros
     }
 

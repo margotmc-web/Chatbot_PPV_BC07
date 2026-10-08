@@ -90,7 +90,19 @@ flowchart LR
     class P5,C8 ia
 ```
 
-Même structure des deux côtés : seule change la nature de chaque brique. La création de ticket n'existe que dans la cible.
+Même structure des deux côtés : seule change la nature de chaque brique. La pré-rédaction du ticket n'existe que dans la cible.
+
+### Qui fait quoi dans l'architecture cible
+
+Les trois briques Microsoft ont chacune un rôle distinct, et chacune remplace une brique du prototype :
+
+![Qui fait quoi : Copilot Studio, Azure AI Search et Azure OpenAI](images/schema-trois-briques.png)
+
+| Rôle | Brique cible | Ce qu'elle fait | Équivalent dans le prototype |
+|---|---|---|---|
+| Le guichet | Copilot Studio | Fenêtre de conversation intégrée aux pages SharePoint ; connexion avec le compte SNCF | Interface React |
+| Le documentaliste | Azure AI Search | Retrouve les passages utiles de la documentation, par le sens | Chroma |
+| Le rédacteur | Azure OpenAI | Rédige la réponse à partir des seuls passages reçus, en citant ses sources | OpenAI en accès direct |
 
 ## 4.3 Les technologies, par couche
 

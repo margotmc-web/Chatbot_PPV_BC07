@@ -27,6 +27,7 @@ Code du projet : [github.com/margotmc-web/Chatbot_PPV](https://github.com/margot
 | 14 | [Diagramme de déploiement](12bis-diagramme-deploiement.md) |
 | 15 | [MCD et modèle logique](13bis-mcd-mld.md) |
 | 16 | [Pré-rédaction des tickets](14-pre-redaction-ticket.md) |
+| 17 | [Jeu d'évaluation de la pertinence (30 questions)](15-jeu-evaluation.md) |
 
 ---
 

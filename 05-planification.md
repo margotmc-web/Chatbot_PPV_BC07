@@ -30,7 +30,7 @@ Voir le diagramme de jalons en [8.2](08-plan-de-release.md).
 
 | Jalon | Condition préalable |
 |---|---|
-| Mesure de la pertinence | Jeu d'évaluation constitué |
+| Mesure de la pertinence | [Jeu d'évaluation de 30 questions](15-jeu-evaluation.md) constitué ✓ |
 | Passage en bêta | Accès Azure obtenu, base vectorielle hébergée |
 | Ouverture aux pilotes | Documentation réelle indexée, réponse « je ne sais pas » en place |
 | Passage en v1 | Résultats de la bêta mesurés, pré-rédaction du ticket opérationnelle |

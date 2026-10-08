@@ -66,7 +66,7 @@ Maximum : 75.
 | Préparation documentaire en JavaScript vs en Python | Itération 2 | Échec répété en JavaScript, succès en Python | 🟢 Vérifié |
 | Vectorisation externe vs en local | Itération 3 | Migration non aboutie, vectorisation externe conservée | 🟢 Vérifié |
 
-🔴 Test restant : passer le jeu d'évaluation décrit en [6.2](06-prototypage.md) sur les options retenues en finale, et comparer les résultats à qualité et coût égaux.
+🔴 Test restant : passer le [jeu d'évaluation](15-jeu-evaluation.md) décrit en [6.2](06-prototypage.md) sur les options retenues en finale, et comparer les résultats à qualité et coût égaux.
 
 ## 3.4 Décisions prises et justifications
 

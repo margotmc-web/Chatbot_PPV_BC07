@@ -75,7 +75,7 @@ flowchart TD
 | Pertinence des réponses | Objectif visé : 95 % | 🔴 À mesurer | Valeur issue de la documentation de conception, non d'un test |
 | Indexation documentaire | 4 documents, 128 morceaux | 🟢 Vérifié | Constaté à l'exécution du script de préparation |
 
-**Protocole de mesure à mettre en place.** Un jeu d'évaluation d'une trentaine de questions de support représentatives, chacune assortie de la réponse attendue. Les réponses de l'assistant sont confrontées à cette référence et classées en trois catégories : exacte, incomplète, erronée. Le protocole est reproductible, et le résultat devient opposable.
+**Protocole de mesure à mettre en place.** Un jeu d'évaluation d'une trentaine de questions de support représentatives, chacune assortie de la réponse attendue. Les réponses de l'assistant sont confrontées à cette référence et classées en trois catégories : exacte, incomplète, erronée. Le protocole est reproductible, et le résultat devient opposable. Les 30 questions, issues des 30 dernières demandes au support, sont détaillées dans le [jeu d'évaluation](15-jeu-evaluation.md).
 
 ## 6.3 Normes de qualité et de performance
 

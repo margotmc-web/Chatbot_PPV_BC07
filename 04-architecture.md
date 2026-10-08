@@ -104,17 +104,21 @@ Les trois briques Microsoft ont chacune un rôle distinct, et chacune remplace u
 | Le documentaliste | Azure AI Search | Retrouve les passages utiles de la documentation, par le sens | Chroma |
 | Le rédacteur | Azure OpenAI | Rédige la réponse à partir des seuls passages reçus, en citant ses sources | OpenAI en accès direct |
 
-## 4.3 Les technologies, par couche
+## 4.3 Les technologies, du prototype à la solution cible
 
-| Couche | Technologie | Type | Rôle |
+| Besoin technique | Prototype de faisabilité (réalisé) 🟢 | Solution cible 🔴 | Raison du choix cible |
 |---|---|---|---|
-| Interface | React | Bibliothèque d'interface | Les écrans affichés dans le navigateur |
-| Serveur | Node.js / Express | Environnement d'exécution et cadre serveur | Reçoit la question, orchestre, renvoie la réponse |
-| Recherche | Chroma | Base de données vectorielle | Recherche par le sens et non par mots-clés |
-| Recherche | Python | Langage de programmation | Préparation et indexation des documents |
-| IA | text-embedding-3-small | Modèle de vectorisation | Traduit un texte en nombres représentant son sens |
-| IA | gpt-3.5-turbo | Grand modèle de langage | Rédige la réponse à partir des passages reçus |
-| Outillage | Docker | Conteneurisation | Environnement reproductible |
-| Outillage | Git / GitHub | Gestion de versions | Historique du code et support des relectures |
+| Interface (la fenêtre de conversation) | React (JavaScript), dans le navigateur | Phase 1 : composant React intégré aux pages SharePoint · Phase 2 : agent Copilot Studio | Accès depuis le SharePoint de l'offre et le catalogue ; en phase 2, un outil Microsoft prêt à l'emploi, plus simple à maintenir |
+| Orchestrer la recherche puis la rédaction | Node.js / Express (JavaScript), sur le poste | Node.js / Express, hébergé sur Azure App Service | Même code que le prototype, hébergé et supervisé dans l'environnement de l'entreprise |
+| Découper et indexer la documentation | Script Python, lancé à la main sur 4 documents | Phase 1 : bibliothèque SharePoint interrogée directement · Phase 2 : indexation automatique dans Azure AI Search | Documentation réelle du service, mise à jour sans intervention manuelle |
+| Recherche par le sens | Chroma (base locale, mesure « cosinus ») | Azure AI Search | Service hébergé, sauvegardé et intégré à l'écosystème Microsoft ([benchmark](03-benchmark.md)) |
+| Traduire le texte en nombres (vectorisation) | text-embedding-3-small, via OpenAI en direct | Même modèle, via Azure OpenAI | Données traitées dans l'environnement de l'entreprise, en région UE |
+| Rédiger la réponse | gpt-3.5-turbo, via OpenAI en direct | Modèle plus récent (gpt-4o-mini), via Azure OpenAI | Meilleure qualité en français, données traitées dans l'environnement de l'entreprise ([benchmark](03-benchmark.md)) |
+| Connexion des utilisateurs | Aucune | Microsoft Entra ID (compte SNCF) | Authentification unique, déjà utilisée par la SNCF |
+| Journalisation | Aucune | Interne SNCF, conservation 6 mois | Traçabilité et conformité RGPD |
+| Outillage | Docker, Git / GitHub | Git / GitHub, déploiement sur Azure | Historique du code et support des revues |
+| Langages | JavaScript, Python | JavaScript, Python | Les mêmes : le code du prototype est réutilisé |
+
+**Les langages ne changent pas** : seuls les services qui entourent le code sont remplacés par leur équivalent Microsoft. C'est ce qui fait du prototype une base réutilisable, et non une maquette jetable.
 
 > Le prototype fonctionne avec OpenAI en accès direct, alors que l'architecture préconisée retient Azure OpenAI. Cet écart s'explique par l'absence d'accès Azure dans le cadre de l'alternance ; la brique testée est identique dans les deux cas.

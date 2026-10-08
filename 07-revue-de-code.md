@@ -66,6 +66,18 @@ Périmètre : `server-fixed.js` (serveur en service), `vectorize.py` (indexation
 | 11 | `server-fixed.js` | Faible | Consigne « [Ref 1] » vs documents étiquetés « [Document 1] » | Harmoniser | À corriger |
 | 12 | `server-fixed.js` | Faible | Erreurs internes renvoyées au navigateur ; clé non vérifiée au démarrage | Message générique, contrôle au démarrage | Dette technique (v1) |
 
+### Captures annotées du code relu
+
+Extraits réels du dépôt [Chatbot_PPV](https://github.com/margotmc-web/Chatbot_PPV) : les lignes concernées sont surlignées et renvoient au registre ci-dessus.
+
+![Indexation des documents — constats 1 et 2](images/capture-1-indexation.png)
+
+![Accès au serveur — constat 5](images/capture-2-acces.png)
+
+![Construction de la réponse — constats 3, 4, 7 et 11](images/capture-3-reponse.png)
+
+![Configuration du projet — constats 8 et 10](images/capture-4-dependances.png)
+
 ## 7.6 Retours au développeur
 
 - **Points forts** : séparation claire recherche / contexte / rédaction ; clés protégées ; code commenté ; supervision (`/api/health`) et script de test en place.

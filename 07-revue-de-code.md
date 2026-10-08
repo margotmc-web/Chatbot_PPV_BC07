@@ -49,7 +49,58 @@ Périmètre : `server-fixed.js` (serveur en service), `vectorize.py` (indexation
 | Conformité RGPD | 1 | Aucune conversation stockée ; questions envoyées à OpenAI en accès direct (choix assumé du prototype) |
 | **Total** | **7 / 14** | Faisabilité démontrée, corrections nécessaires avant la bêta |
 
-## 7.5 Registre des constats
+## 7.5 Constats détaillés
+
+Les constats sont présentés par partie du code relue. Chaque capture est un extrait réel du dépôt [Chatbot_PPV](https://github.com/margotmc-web/Chatbot_PPV) : les lignes en cause sont surlignées et portent le numéro du constat. Les numéros renvoient au registre récapitulatif (7.6).
+
+### Indexation des documents — constats 1 et 2 (criticité haute)
+
+Avant de pouvoir répondre, l'assistant découpe la documentation en morceaux et les range dans la base de recherche. La revue montre que ce découpage fausse les données :
+
+- **Constat 1** — le texte est coupé à chaque point. Or les prix s'écrivent avec un point (« 0.50€ ») : ils sont donc coupés en deux, et l'IA reçoit des tarifs faux.
+- **Constat 2** — seules les 3 premières phrases de chaque document sont conservées ; le reste de la documentation n'est jamais indexé.
+
+![Indexation des documents — constats 1 et 2](images/capture-1-indexation.png)
+
+Le test sur le document de tarification le confirme : le tarif du stockage n'est jamais indexé, et les prix des VM Standard et Premium sont tronqués. **Action** : découper par taille (1 000 caractères, avec un chevauchement de 200), comme prévu dans le [diagramme de classes](10bis-diagramme-classes.md).
+
+### Construction de la réponse — constats 3, 4, 7 et 11
+
+C'est le cœur de l'assistant : il assemble la question, les passages trouvés et une consigne, puis interroge l'IA.
+
+- **Constat 3 (haute)** — tous les passages trouvés sont envoyés à l'IA, même s'ils ne correspondent pas à la question. Aucun seuil n'est appliqué et la consigne ne demande pas de refuser de répondre : l'assistant peut donc inventer une procédure.
+- **Constat 4 (haute)** — l'historique envoyé par le navigateur est transmis tel quel à l'IA. Un utilisateur malveillant pourrait y glisser de fausses consignes.
+- **Constat 7 (moyenne)** — la température, réglage qui dose la créativité de l'IA, est à 0,7 : trop élevée pour une réponse de support qui doit rester factuelle.
+- **Constat 11 (faible)** — les documents sont étiquetés « [Document n] » alors que la consigne demande de citer « [Ref n] ».
+
+![Construction de la réponse — constats 3, 4, 7 et 11](images/capture-3-reponse.png)
+
+**Actions** : appliquer un seuil de pertinence et une réponse « je ne sais pas » ; ne transmettre que les messages de l'utilisateur et de l'assistant ; abaisser la température entre 0 et 0,2 ; harmoniser les libellés.
+
+### Accès au serveur — constat 5 (criticité moyenne)
+
+- **Constat 5** — le serveur accepte les requêtes venant de n'importe quel site. Sans gravité tant que le prototype reste sur un poste local, ce réglage deviendrait une faille dès l'ouverture à des utilisateurs.
+
+![Accès au serveur — constat 5](images/capture-2-acces.png)
+
+**Action** : limiter l'accès aux adresses du SharePoint, via la variable `CORS_ORIGIN` déjà prévue dans `.env.example`.
+
+### Configuration du projet — constats 8 et 10
+
+- **Constat 8 (moyenne)** — la commande de démarrage lance `server-rag.js`, alors que le serveur réellement utilisé est `server-fixed.js`. Deux chaînes de traitement coexistent, avec des noms de collection différents.
+- **Constat 10 (faible)** — `chroma-js` est une bibliothèque de couleurs, et non le client de la base Chroma ; `@xenova/transformers` est un vestige de l'itération 3.
+
+![Configuration du projet — constats 8 et 10](images/capture-4-dependances.png)
+
+**Actions** : ne garder qu'une chaîne, supprimer les fichiers obsolètes, retirer les dépendances inutiles.
+
+### Autres constats — 6, 9 et 12
+
+- **Constat 6 (moyenne)** — aucun délai maximal ni nouvelle tentative sur les appels à l'IA, alors que le [diagramme de séquence](11-diagramme-sequence.md) les prévoit.
+- **Constat 9 (moyenne)** — le score renvoyé par la base est une distance (plus elle est petite, plus le passage est proche), mais il est affiché comme un pourcentage de correspondance.
+- **Constat 12 (faible)** — les messages d'erreur internes sont renvoyés au navigateur, et l'absence de clé d'accès n'est pas vérifiée au démarrage.
+
+## 7.6 Registre récapitulatif des constats
 
 | N° | Élément | Criticité | Constat | Action recommandée | Décision |
 |---|---|---|---|---|---|
@@ -66,19 +117,7 @@ Périmètre : `server-fixed.js` (serveur en service), `vectorize.py` (indexation
 | 11 | `server-fixed.js` | Faible | Consigne « [Ref 1] » vs documents étiquetés « [Document 1] » | Harmoniser | À corriger |
 | 12 | `server-fixed.js` | Faible | Erreurs internes renvoyées au navigateur ; clé non vérifiée au démarrage | Message générique, contrôle au démarrage | Dette technique (v1) |
 
-### Captures annotées du code relu
-
-Extraits réels du dépôt [Chatbot_PPV](https://github.com/margotmc-web/Chatbot_PPV) : les lignes concernées sont surlignées et renvoient au registre ci-dessus.
-
-![Indexation des documents — constats 1 et 2](images/capture-1-indexation.png)
-
-![Accès au serveur — constat 5](images/capture-2-acces.png)
-
-![Construction de la réponse — constats 3, 4, 7 et 11](images/capture-3-reponse.png)
-
-![Configuration du projet — constats 8 et 10](images/capture-4-dependances.png)
-
-## 7.6 Retours au développeur
+## 7.7 Retours au développeur
 
 - **Points forts** : séparation claire recherche / contexte / rédaction ; clés protégées ; code commenté ; supervision (`/api/health`) et script de test en place.
 - **Points d'amélioration** : fiabiliser l'indexation (constats 1-2) ; empêcher toute réponse sans source pertinente (3) ; sécuriser les entrées (4-5).

@@ -1,5 +1,7 @@
 [← Accueil](README.md)
 
+> ⚠️ Version obsolète, conservée pour l'historique : voir la version à jour, [13bis — MCD et modèle logique](13bis-mcd-mld.md).
+
 # 13. Modèle de données — MCD et modèle logique
 
 ## 13.1 Le principe

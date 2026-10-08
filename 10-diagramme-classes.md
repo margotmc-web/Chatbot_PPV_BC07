@@ -1,5 +1,7 @@
 [← Accueil](README.md)
 
+> ⚠️ Version obsolète, conservée pour l'historique : voir la version à jour, [10bis — Diagramme de classes](10bis-diagramme-classes.md).
+
 # 10. Diagramme de classes
 
 ## Modèle objet de l'assistant PPV

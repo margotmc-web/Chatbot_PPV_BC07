@@ -3,7 +3,7 @@
 Dossier du bloc **BC07** — Superviser le développement d'une solution numérique.
 Margot Marie-Catherine · MSc Digital Manager (RNCP 40601) · The Progress Factory
 
-Code du projet : [github.com/margotmc-web/Chatbot_PPV](https://github.com/margotmc-web/Chatbot_PPV_BC07)
+Code du projet : [github.com/margotmc-web/Chatbot_PPV](https://github.com/margotmc-web/Chatbot_PPV)
 
 ---
 
@@ -26,6 +26,7 @@ Code du projet : [github.com/margotmc-web/Chatbot_PPV](https://github.com/margot
 | 13 | [Diagramme séquence](11-diagramme-sequence.md) |
 | 14 | [Diagramme de déploiement](12bis-diagramme-deploiement.md) |
 | 15 | [MCD et modèle logique](13bis-mcd-mld.md) |
+| 16 | [Pré-rédaction des tickets](14-pre-redaction-ticket.md) |
 
 ---
 

@@ -34,6 +34,6 @@ Deux objectifs en découlent, qui correspondent à deux usages distincts :
 
 | Persona | Profil | Attentes vis-à-vis de l'assistant |
 |---|---|---|
-| Jeanne, 50 ans | Usage quotidien d'une VM standard | Gagner du temps à l'utilisation et dans le traitement des incidents |
+| Jeanne, 30 ans | Usage quotidien d'une VM standard | Gagner du temps à l'utilisation et dans le traitement des incidents |
 | Louis, 50 ans | Usage occasionnel d'une VM clone | Mêmes gains, avec une réorientation possible vers une VM standard |
 | Léa, 45 ans | Gestionnaire du parc | Fidéliser les clients, augmenter le parc, faire connaître l'offre |

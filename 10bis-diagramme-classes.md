@@ -178,19 +178,19 @@ classDiagram
         +exporterHistorique() String
     }
 
-    class Ticket {
-        +String numero
-        +String statut
-        +String contexteTransmis
-        +creerDepuis(conversation) Ticket
+    class TicketPreredige {
+        +String objet
+        +String description
+        +Boolean reporte
+        +preparerDepuis(conversation) TicketPreredige
     }
 
-    Conversation "1" ..> "0..1" Ticket : escalade vers
+    Conversation "1" ..> "0..1" TicketPreredige : pre-redige
 ```
 
 **Comment le lire.** Le trait est pointillé et porte `0..1` : une conversation peut donner lieu à un ticket, ou à aucun. C'est tout l'enjeu du projet — chaque conversation qui se termine sans ticket est un incident résolu sans mobiliser le support.
 
-Le ticket emporte l'historique de l'échange : le technicien de niveau 2 reçoit un dossier déjà documenté plutôt qu'une demande vide.
+Le ticket pré-rédigé reprend l'historique de l'échange. L'utilisateur le colle lui-même dans ServiceNow : le technicien de niveau 2 reçoit un dossier déjà documenté plutôt qu'une demande vide, et l'assistant n'a besoin d'aucun droit d'écriture sur l'outil.
 
 ## 10.7 Correspondance avec le code
 
@@ -202,4 +202,4 @@ Le ticket emporte l'historique de l'échange : le technicien de niveau 2 reçoit
 | `Echange`, `SourceCitee` | `server-fixed.js` | 🟢 Vérifié |
 | `ModeleIA` | API OpenAI | 🟢 Vérifié |
 | `Utilisateur`, `Conversation` | Pas de persistance dans le prototype | 🔴 À construire |
-| `Ticket` | API ServiceNow | 🔴 À construire |
+| `TicketPreredige` | Pré-rédaction par le serveur, report manuel dans ServiceNow par l'utilisateur | 🔴 À construire |

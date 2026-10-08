@@ -162,7 +162,7 @@ flowchart TB
 | Escalade | Aucune | Ticket pré-rédigé, reporté par l'utilisateur | Ticket pré-rédigé, reporté par l'utilisateur |
 | Authentification | Aucune | Microsoft Entra ID | Microsoft Entra ID |
 | Journalisation | Aucune | Héritée de SharePoint | Interne SNCF, 6 mois, conformité RGPD |
-| Utilisateurs | 1 | Environ 1 500 | Environ 1 500 |
+| Utilisateurs | 1 | Environ 2 000 | Environ 2 000 |
 
 ## 12.5 Trois lectures du tableau
 

@@ -102,7 +102,7 @@ flowchart TB
 | Authentification | Azure AD, authentification unique |
 | Point d'entrée | Microsoft Teams via Copilot Studio |
 | Données de journalisation | Conservation 6 mois, conformité RGPD |
-| Utilisateurs cibles | Environ 1 500 |
+| Utilisateurs cibles | Environ 2 000 |
 
 ## Ce qui change entre les deux
 

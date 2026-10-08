@@ -43,7 +43,7 @@ flowchart TD
 | **Objectif** | Obtenir des réponses réelles, en interrogeant directement l'IA |
 | **Réalisation** | Chaîne complète écrans / serveur / IA opérationnelle |
 | **Résultat** | Le système répond, mais chaque question suppose de transmettre un volume documentaire important : environ 0,05 € par question et une dizaine de secondes d'attente 🟡 |
-| **Analyse** | À l'échelle de 1 500 utilisateurs, ce coût interdit toute mise en service. La limite n'est pas la qualité des réponses, c'est le modèle économique |
+| **Analyse** | À l'échelle de 2 000 utilisateurs, ce coût interdit toute mise en service. La limite n'est pas la qualité des réponses, c'est le modèle économique |
 | **Correctif** | Introduire une recherche documentaire préalable |
 
 ### Itération 2 — Mettre en place la recherche documentaire

@@ -8,7 +8,7 @@ Six critères, pondérés selon les contraintes du service PPV.
 
 | Critère | Ce qu'il mesure | Poids |
 |---|---|---|
-| Coût à l'usage | Coût par question, projeté sur 1 500 utilisateurs | Fort |
+| Coût à l'usage | Coût par question, projeté sur 2 000 utilisateurs | Fort |
 | Souveraineté des données | La documentation interne sort-elle du périmètre de l'entreprise ? | Fort |
 | Qualité en français | Pertinence sur un vocabulaire métier francophone | Fort |
 | Facilité d'intégration | Effort pour relier la brique au reste de la chaîne | Moyen |

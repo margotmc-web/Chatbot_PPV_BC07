@@ -12,7 +12,7 @@ Priorisation MoSCoW appliquée au MVP, limité à la résolution d'incident.
 | Doit avoir | Recherche préalable dans la documentation | 🟢 Vérifié |
 | Doit avoir | Affichage des sources et du taux de correspondance | 🟢 Vérifié |
 | Doit avoir | Réponse « je ne sais pas » quand aucun passage ne correspond | 🔴 À construire |
-| Doit avoir | Création automatique d'un ticket vers le niveau 2 | 🔴 À construire |
+| Doit avoir | Pré-rédaction du ticket vers le niveau 2 | 🔴 À construire |
 | Doit avoir | Indexation automatique de la documentation SharePoint | 🔴 À construire |
 | Devrait avoir | Accès depuis le catalogue des services numériques/Sharepoint de l'offre | 🔴 À construire |
 | Devrait avoir | Historique des échanges par utilisateur | 🔴 À construire |
@@ -33,7 +33,7 @@ Voir le diagramme de jalons en [8.2](08-plan-de-release.md).
 | Mesure de la pertinence | Jeu d'évaluation constitué |
 | Passage en bêta | Accès Azure obtenu, base vectorielle hébergée |
 | Ouverture aux pilotes | Documentation réelle indexée, réponse « je ne sais pas » en place |
-| Passage en v1 | Résultats de la bêta mesurés, création de ticket opérationnelle |
+| Passage en v1 | Résultats de la bêta mesurés, pré-rédaction du ticket opérationnelle |
 
 **Dépendance critique** : l'obtention d'un accès Azure conditionne tout le reste. Tant qu'elle n'est pas levée, le prototype ne peut pas quitter le poste de travail.
 

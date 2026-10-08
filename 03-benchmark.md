@@ -27,27 +27,46 @@ Six critères, pondérés selon les contraintes du service PPV.
 
 ### Base de recherche
 
-| Option | Type | Évaluation |
-|---|---|---|
-| Chroma | Base vectorielle, exécutable en local | |
-| FAISS | Bibliothèque de recherche vectorielle | |
-| Azure AI Search | Service hébergé Microsoft | |
-| pgvector | Extension d'une base relationnelle | |
+Notes de 1 à 5, pondérées (poids fort ×3, moyen ×2). Le critère « qualité en français » relève du modèle et ne s'applique pas ici (maximum : 60).
+
+| Critère (poids) | Chroma | FAISS | Azure AI Search | pgvector |
+|---|---|---|---|---|
+| Coût (×3) | 5 — gratuit, open source | 5 — gratuit | 2 — service payant | 4 — gratuit, mais base PostgreSQL à exploiter |
+| Souveraineté (×3) | 5 — exécution locale | 5 — exécution locale | 4 — hébergé dans l'environnement Microsoft de l'entreprise | 5 — exécution locale |
+| Intégration (×2) | 4 — serveur prêt à l'emploi | 2 — simple bibliothèque, serveur à développer | 5 — natif dans l'écosystème SNCF | 3 — base PostgreSQL absente du service |
+| Maturité (×2) | 3 — outil récent, orienté prototypage | 4 — éprouvé (Meta) | 5 — service d'entreprise | 4 — extension reconnue |
+| Réversibilité (×2) | 4 | 3 | 2 — propre à Microsoft | 4 |
+| **Score pondéré** | **52 / 60** | 48 / 60 | 42 / 60 | 49 / 60 |
+
+**Décision en deux temps** : Chroma pour le prototype (gratuite, locale, rapide à installer) ; Azure AI Search pour la production, où l'hébergement, la supervision et l'intégration à l'écosystème Microsoft deviennent prioritaires.
 
 ### Modèle de rédaction
 
-| Option | Type | Évaluation |
-|---|---|---|
-| gpt-3.5-turbo | Grand modèle de langage, accès direct | |
-| gpt-4o-mini | Grand modèle de langage, génération plus récente | |
-| Azure OpenAI | Mêmes modèles, hébergés dans l'environnement de l'entreprise | |
-| Modèle en local | Exécution sur l'infrastructure du service | |
+Maximum : 75.
 
-*Grilles à renseigner : une note par critère du 3.1.*
+| Critère (poids) | gpt-3.5-turbo (direct) | gpt-4o-mini (direct) | Azure OpenAI | Modèle en local |
+|---|---|---|---|---|
+| Coût (×3) | 4 | 5 — plus récent, tarif inférieur | 4 — mêmes modèles + infrastructure | 3 — gratuit à l'usage, serveur puissant nécessaire |
+| Souveraineté (×3) | 2 — données hors de l'entreprise | 2 — idem | 4 — environnement de l'entreprise, région UE | 5 — aucune donnée transmise |
+| Qualité en français (×3) | 3 | 4 | 4 | 2 — modèles légers moins performants |
+| Intégration (×2) | 5 | 5 | 5 — authentification de l'entreprise | 2 — échec constaté (itération 3) |
+| Maturité (×2) | 4 — génération ancienne | 4 | 5 | 3 |
+| Réversibilité (×2) | 4 | 4 | 3 | 4 |
+| **Score pondéré** | 53 / 75 | 59 / 75 | **62 / 75** | 48 / 75 |
+
+**Décision** : gpt-3.5-turbo en accès direct pour le prototype (choix subi, faute d'accès Azure) ; Azure OpenAI en production, avec un modèle de génération plus récente comme gpt-4o-mini.
+
+**Sources mobilisées** : documentation officielle des éditeurs (OpenAI, Microsoft Learn, Chroma, FAISS, pgvector), retours de la communauté technique (dépôts GitHub, signalements de problèmes), tests réalisés au cours du prototypage.
 
 ## 3.3 Tests réalisés
 
-🔴 À construire. Le protocole prévu : le jeu d'évaluation décrit en [6.2](06-prototypage.md) est passé sur chaque option retenue en finale, et les résultats sont comparés à qualité et coût égaux.
+| Test | Comparaison | Résultat | Statut |
+|---|---|---|---|
+| IA interrogée directement vs avec recherche préalable | Itération 1 vs itération 2 | Coût par question 0,05 € → 0,0003 € ; temps ≈ 10 s → < 1 s | 🟡 Estimé |
+| Préparation documentaire en JavaScript vs en Python | Itération 2 | Échec répété en JavaScript, succès en Python | 🟢 Vérifié |
+| Vectorisation externe vs en local | Itération 3 | Migration non aboutie, vectorisation externe conservée | 🟢 Vérifié |
+
+🔴 Test restant : passer le jeu d'évaluation décrit en [6.2](06-prototypage.md) sur les options retenues en finale, et comparer les résultats à qualité et coût égaux.
 
 ## 3.4 Décisions prises et justifications
 

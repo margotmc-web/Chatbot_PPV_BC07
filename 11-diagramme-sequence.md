@@ -32,8 +32,9 @@ sequenceDiagram
         F-->>J: Propose l'escalade
         J->>F: Accepte
         F->>S: POST /api/ticket
-        S->>SN: creerTicket(historique)
-        SN-->>J: Numero de ticket
+        S-->>F: Texte du ticket pre-redige
+        F-->>J: Affiche le texte a copier
+        J->>SN: Colle le texte dans ServiceNow
     else Passages pertinents trouves
         R->>R: construireContexte(morceaux)
         R->>IA: redigerReponse(question, contexte)
@@ -60,7 +61,7 @@ sequenceDiagram
 | Chemin | Déclencheur | Comportement attendu | Statut |
 |---|---|---|---|
 | Nominal | Passages trouvés, service disponible | Réponse rédigée avec ses sources citées | 🟢 Vérifié |
-| Erreur documentaire | Aucun morceau au-dessus du seuil de correspondance | Refus de répondre, puis escalade vers ServiceNow | 🔴 À construire |
+| Erreur documentaire | Aucun morceau au-dessus du seuil de correspondance | Refus de répondre, puis pré-rédaction du ticket, que l'utilisateur colle dans ServiceNow | 🔴 À construire |
 | Erreur technique | Le service d'IA renvoie une erreur de quota ou d'indisponibilité | Une nouvelle tentative, puis affichage des extraits bruts | 🔴 À construire |
 
 ## Pourquoi ces deux cas d'erreur

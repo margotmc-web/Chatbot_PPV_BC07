@@ -1,5 +1,7 @@
 [← Accueil](README.md)
 
+> ⚠️ Version obsolète, conservée pour l'historique : voir la version à jour, [12bis — Diagramme de déploiement](12bis-diagramme-deploiement.md).
+
 # 12. Diagramme de déploiement
 
 ## Environnement de prototypage — ce qui tourne aujourd'hui

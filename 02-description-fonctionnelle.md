@@ -9,7 +9,7 @@ Du point de vue de l'utilisateur, le fonctionnement tient en quatre temps :
 1. Il pose sa question en langage courant, sans mot-clé imposé ni formulaire à remplir.
 2. Le système recherche d'abord les passages pertinents dans la documentation du service, puis rédige une réponse à partir de ces seuls passages.
 3. La réponse s'affiche accompagnée de ses sources et d'un taux de correspondance — par exemple : documentation Diagnostic (95 %), FAQ (82 %), procédure ServiceNow (71 %).
-4. Si le problème persiste, un ticket est ouvert vers un technicien de niveau 2.
+4. Si le problème persiste, l'assistant pré-rédige le ticket ; l'utilisateur le reporte lui-même dans ServiceNow, à destination d'un technicien de niveau 2.
 
 ### État des fonctionnalités
 
@@ -18,7 +18,7 @@ Du point de vue de l'utilisateur, le fonctionnement tient en quatre temps :
 | Saisie en langage naturel et réponse rédigée | 🟢 Vérifié |
 | Recherche préalable dans la documentation | 🟢 Vérifié |
 | Affichage des sources et du taux de correspondance | 🟢 Vérifié |
-| Création automatique d'un ticket vers le niveau 2 | 🔴 À construire |
+| Pré-rédaction du ticket vers le niveau 2 (reporté par l'utilisateur dans ServiceNow) | 🔴 À construire |
 | Accès depuis Sharepoint de l'offre/Catalogue des services numériques | 🔴 À construire |
 
 > **Le résultat attendu le plus discriminant est l'affichage des sources.** Un assistant qui répond sans justifier sa réponse n'est pas utilisable dans un contexte de support : l'utilisateur doit pouvoir vérifier d'où vient l'information, et le service doit pouvoir identifier une documentation obsolète. Cette exigence a orienté l'ensemble des choix techniques.
@@ -42,7 +42,7 @@ flowchart TD
     H -->|Oui| I([Fin — sans ticket])
     H -->|Non| K["Transmission<br/>au niveau 2"]
     G --> K
-    K --> L([Ticket créé avec<br/>l'historique de l'échange])
+    K --> L([Ticket pré-rédigé avec l'historique,<br/>collé par l'utilisateur dans ServiceNow])
 
     classDef ok fill:#e4f3e8,stroke:#1a6b2f,color:#143d1f;
     classDef todo fill:#fde9ec,stroke:#a1001c,color:#5c0010;

@@ -13,7 +13,7 @@ gantt
     Mesure de la pertinence           :b3, after b1, 30d
     section v1 — MVP
     Résolution d'incident             :v1, after b2, 60d
-    Intégration Teams                 :v1b, after b2, 45d
+    Intégration SharePoint et catalogue :v1b, after b2, 45d
     section v2
     Recherche d'information sur l'offre :v2, after v1, 60d
 ```

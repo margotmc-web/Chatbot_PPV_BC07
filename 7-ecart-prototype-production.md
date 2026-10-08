@@ -14,7 +14,7 @@ flowchart TB
         C2[Service hébergé et sauvegardé]
         C3[SharePoint, réindexation auto]
         C4[Service géré, supervision]
-        C5[Teams]
+        C5[SharePoint de l'offre<br/>et catalogue des services]
     end
     P1 --> C1
     P2 --> C2

@@ -4,12 +4,12 @@
 flowchart LR
     subgraph U["Utilisateur"]
         U1["Décrit son problème"]
-        U2["Reçoit le numéro<br/>de ticket"]
+        U2["Copie le texte<br/>dans ServiceNow"]
     end
     subgraph A["Assistant"]
         A1["Détecte l'absence<br/>de réponse fiable"]
         A2["Récupère le contexte :<br/>question, passages consultés,<br/>procédure déjà tentée"]
-        A3["Crée le ticket"]
+        A3["Pré-rédige le ticket"]
     end
     subgraph N2["Support niveau 2"]
         N1["Reçoit un ticket<br/>pré-documenté"]

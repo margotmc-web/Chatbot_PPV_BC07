@@ -10,7 +10,7 @@ Le projet consiste à concevoir un assistant conversationnel capable de traiter 
 
 **Périmètre du prototype.** Ce dossier ne porte pas sur l'assistant dans son ensemble, mais sur la brique qui concentre la difficulté technique : faire répondre une intelligence artificielle à partir d'une documentation d'entreprise, de façon fiable et à un coût soutenable pour 1 500 utilisateurs.
 
-Les briques d'ingénierie classiques — intégration à Teams, gestion des comptes, montée en charge — sont volontairement exclues : elles ne présentent pas de difficulté de conception et ne relèvent pas d'une démonstration de faisabilité.
+Les briques d'ingénierie classiques — intégration aux pages SharePoint de l'offre, gestion des comptes, montée en charge — sont volontairement exclues : elles ne présentent pas de difficulté de conception et ne relèvent pas d'une démonstration de faisabilité.
 
 ## 1.2 Objectifs
 

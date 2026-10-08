@@ -20,7 +20,7 @@ flowchart TD
     G --> K["Proposition de transmettre<br/>au support de niveau 2"]
     K --> L{"Jeanne accepte ?"}
     L -->|Non| M([Fin — abandon])
-    L -->|Oui| N["Ticket créé<br/>avec l'historique de l'échange"]
+    L -->|Oui| N["Ticket pré-rédigé avec l'historique,<br/>collé par Jeanne dans ServiceNow"]
     N --> O([Prise en charge par<br/>un technicien N2])
 
     classDef ok fill:#e4f3e8,stroke:#1a6b2f,color:#143d1f;

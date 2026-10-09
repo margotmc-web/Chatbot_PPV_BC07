@@ -26,7 +26,7 @@ flowchart LR
 | Élément | Choix |
 |---|---|
 | Outils automatiques | ESLint (JavaScript), Ruff (Python), npm audit (vulnérabilités des dépendances), analyse des secrets GitHub, tests |
-| Relecture assistée par IA | Consigne versionnée dans le dépôt |
+| Relecture assistée par IA | SonarQube Community (gratuit), GitHub CodeQL (gratuit) ; consigne versionnée dans le dépôt |
 | Relecture humaine | Développeur identifié |
 | Périodicité | À chaque demande de fusion, plus une revue collective de 30 min en fin de sprint |
 

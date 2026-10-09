@@ -117,6 +117,17 @@ C'est le cœur de l'assistant : il assemble la question, les passages trouvés e
 | 11 | `server-fixed.js` | Faible | Consigne « [Ref 1] » vs documents étiquetés « [Document 1] » | Harmoniser | À corriger |
 | 12 | `server-fixed.js` | Faible | Erreurs internes renvoyées au navigateur ; clé non vérifiée au démarrage | Message générique, contrôle au démarrage | Dette technique (v1) |
 
+## 7.8 Intégration au planning
+
+La relecture de code est intégrée à chaque sprint de développement :
+
+| Phase | Sprints | Relecture | Durée |
+|---|---|---|---|
+| MVP | S3, S4, S5 | Relecture croisée en fin de sprint | 3 h/sprint |
+| Post-MVP | S13, S14, S15 | Relecture croisée en fin de sprint | 3 h/sprint |
+
+Cette relecture fait partie de la cérémonie de fin de sprint (revue + rétrospective) et s'effectue de manière asynchrone ou lors de la réunion d'équipe existante. Elle n'ajoute pas de surcoût au planning global.
+
 ## 7.7 Retours au développeur
 
 - **Points forts** : séparation claire recherche / contexte / rédaction ; clés protégées ; code commenté ; supervision (`/api/health`) et script de test en place.

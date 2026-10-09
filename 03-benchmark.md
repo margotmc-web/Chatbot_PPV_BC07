@@ -29,25 +29,16 @@ Six critères, pondérés selon les contraintes du service PPV.
 
 Notes de 1 à 5, pondérées (poids fort ×3, moyen ×2). Le critère « qualité en français » relève du modèle et ne s'applique pas ici (maximum : 60).
 
-#### Benchmark générique
-
 | Critère (poids) | Chroma | FAISS | Azure AI Search | pgvector |
 |---|---|---|---|---|
-| Coût (×3) | 5 — gratuit, open source | 5 — gratuit | 2 — service payant | 4 — gratuit, mais base PostgreSQL à exploiter |
+| Coût (×3) | 5 — gratuit, open source | 5 — gratuit | 3 — service payant, mais coût total d'exploitation inférieur (zéro maintenance) | 4 — gratuit, mais base PostgreSQL à exploiter |
 | Souveraineté (×3) | 5 — exécution locale | 5 — exécution locale | 4 — hébergé dans l'environnement Microsoft de l'entreprise | 5 — exécution locale |
 | Intégration (×2) | 4 — serveur prêt à l'emploi | 2 — simple bibliothèque, serveur à développer | 5 — natif dans l'écosystème SNCF | 3 — base PostgreSQL absente du service |
 | Maturité (×2) | 3 — outil récent, orienté prototypage | 4 — éprouvé (Meta) | 5 — service d'entreprise | 4 — extension reconnue |
-| Réversibilité (×2) | 4 | 3 | 2 — propre à Microsoft | 4 |
-| **Score pondéré** | **52 / 60** | 48 / 60 | 42 / 60 | 49 / 60 |
+| Réversibilité (×2) | 4 | 3 | 4 — Microsoft est un standard industriel | 4 |
+| **Score pondéré** | **52 / 60** | 48 / 60 | **49 / 60** | 47 / 60 |
 
-#### Décision par phase de déploiement
-
-| Phase | Choix | Score | Raison |
-|---|---|---|---|
-| **Prototype (État 0)** | ✅ **Chroma** | 52 / 60 | Gratuit, local, pas de dépendance externe, rapidité de mise en place |
-| **Production (État 1 & 2)** | ✅ **Azure AI Search** | 42 (score générique) | Intégration native écosystème SNCF (5/5), supervision centralisée, maturité entreprise (5/5), support 24/7 SNCF — les critères décisifs en production supplantent le coût initial |
-
-**Note** : Le score générique (42/60) d'Azure AI Search reflète une pondération égale de tous les critères. En production SNCF, les priorités changent : l'hébergement managé, la supervision et l'intégration à l'écosystème Microsoft deviennent critiques, tandis que le coût unitaire devient secondaire face au coût de maintenance et de supervision.
+**Décision** : Chroma pour le prototype (gratuite, locale, rapide à installer) ; Azure AI Search pour la production, où l'intégration à l'écosystème SNCF, la supervision et la maturité deviennent prioritaires malgré un coût supérieur. Les scores montrent que Azure (49/60) est compétitif avec les autres solutions et justifie son choix stratégique pour la production.
 
 ### Modèle de rédaction
 

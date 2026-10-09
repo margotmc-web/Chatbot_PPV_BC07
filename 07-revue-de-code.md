@@ -30,6 +30,8 @@ flowchart LR
 | Relecture humaine | Développeur identifié |
 | Périodicité | À chaque demande de fusion, plus une revue collective de 30 min en fin de sprint |
 
+**Justification du choix des outils :** Pour un budget restreint, la relecture assistée par IA utilise des outils gratuits (SonarQube Community, GitHub CodeQL), suffisants pour le prototype. Une solution payante pourrait être envisagée en Post-MVP selon l'évolution des contraintes.
+
 ## 7.3 Grille de relecture
 
 Sept critères arrêtés avant la première revue, notés de 0 (non conforme) à 2 (conforme).

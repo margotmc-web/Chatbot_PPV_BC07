@@ -15,7 +15,6 @@ sequenceDiagram
     participant R as Service RAG
     participant C as Base vectorielle
     participant IA as Modele OpenAI
-    participant SN as ServiceNow
 
     J->>F: Saisit « ma VM ne demarre pas »
     F->>S: POST /api/chat
@@ -30,19 +29,17 @@ sequenceDiagram
         R-->>S: Score insuffisant
         S-->>F: « Aucune procedure documentee »
         F-->>J: Propose l'escalade
-        J->>F: Accepte
-        F->>S: POST /api/ticket
-        S-->>F: Texte du ticket pre-redige
-        F-->>J: Affiche le texte a copier
-        J->>SN: Colle le texte dans ServiceNow
+        Note over J,F: Suite : diagramme « Escalade »
     else Passages pertinents trouves
         R->>R: construireContexte(morceaux)
         R->>IA: redigerReponse(question, contexte)
 
         alt Service IA indisponible
             IA-->>R: Erreur 429 ou 503
-            R->>R: Nouvelle tentative apres 2 s
-            IA-->>R: Nouvelle erreur
+            loop Nouvelle tentative apres 2 s
+                R->>IA: redigerReponse(question, contexte)
+                IA-->>R: Nouvelle erreur
+            end
             R-->>S: Echec de redaction
             S-->>F: Message d'erreur + passages bruts
             F-->>J: Affiche les extraits de documentation
@@ -54,6 +51,22 @@ sequenceDiagram
             F-->>J: Affiche la procedure et ses sources
         end
     end
+```
+
+## Escalade
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor J as Jeanne
+    participant F as Interface React
+    participant S as Serveur Express
+
+    Note over J,F: Suite du scenario principal :<br/>aucun passage pertinent trouve
+    J->>F: Accepte
+    F->>S: POST /api/ticket
+    S-->>F: Texte du ticket pre-redige
+    F-->>J: Affiche le texte a copier
 ```
 
 ## Les trois chemins
